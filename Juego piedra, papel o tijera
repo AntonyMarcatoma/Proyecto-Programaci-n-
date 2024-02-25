@@ -1,43 +1,26 @@
-mport random
+#Proyecto Programación 
+#Antony Marcatoma GR1
+#Juego piedra papel o tijera 
+import random
 
-def jugar_piedra_papel_tijera(jugador1, jugador2):
-  """
-  Función que juega una partida de piedra, papel y tijera.
+op = ["piedra", "papel", "tijera"]
+sep = "-" * 15
 
-  Argumentos:
-    jugador1 (str): La elección del jugador 1.
-    jugador2 (str): La elección del jugador 2.
-
-  Retorno:
-    str: El ganador de la partida.
-  """
-
-  # Lista de opciones válidas.
-  opciones = ["piedra", "papel", "tijera"]
-
-  # Validar las elecciones de los jugadores.
-  if jugador1 not in opciones or jugador2 not in opciones:
-    return "Error: Opción no válida."
-
-  # Si las elecciones son iguales, es un empate.
-  if jugador1 == jugador2:
-    return "Empate!"
-
-  # Definir la lógica del juego.
-  gana_jugador1 = (jugador1 == "piedra" and jugador2 == "tijera") or \
-                  (jugador1 == "papel" and jugador2 == "piedra") or \
-                  (jugador1 == "tijera" and jugador2 == "papel")
-
-  # Devolver el ganador.
-  if gana_jugador1:
-    return "**¡Ganó el jugador 1!**"
-  else:
-    return "**¡Ganó el jugador 2!**"
-
-# Obtener las elecciones de los jugadores.
-jugador1 = input("Jugador 1, elige (piedra, papel, tijera): ")
-jugador2 = input("Jugador 2, elige (piedra, papel, tijera): ")
-
-# Jugar la partida y mostrar el resultado.
-resultado = jugar_piedra_papel_tijera(jugador1, jugador2)
-print(resultado)
+while True:
+    user = input("Elije: piedra, papel o tijera ").lower()
+    if user not in op:
+        print("Movimiento no valido")
+        continue
+    pc = random.choice(op)
+    print(f"La PC ha seleccionado {pc}")
+    if user == pc:
+        print(f"Empate!, ambos eligieron {user}")
+    elif user == "piedra" and pc == "tijera":
+        print(f"Ganaste!, {user} gana en contra de {pc}")
+    elif user == "papel" and pc == "piedra":
+        print(f"Ganaste!, {user} gana en contra de {pc}")
+    elif user == "tijera" and pc == "papel":
+        print(f"Ganaste!, {user} gana en contra de {pc}")
+    else:
+        print(f"Perdiste, {user} pierde contra {pc}")
+    print(f"{sep}Fin del juego {sep}")
